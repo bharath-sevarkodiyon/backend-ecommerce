@@ -8,15 +8,15 @@ const createUserDao = async (data)=>{
     return {...newData._doc}
 }
 
-// const getUsersDao = async () => {
-//     const getUser = new createUserDetails.UserDetails({
-//         ...data
-//     })
-//     const users = await getUser.find({});
-//     return {...users._doc}
-// };
+const getUsersDao = async () => {
+    const getUser = new createUserDetails.UserDetails({
+        ...data
+    })
+    const users = await getUser.find({});
+    return {...users._doc}
+};
 
 module.exports = {
     createUserDao, 
-    // getUsersDao
+    getUsersDao
 }

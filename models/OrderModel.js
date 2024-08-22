@@ -2,9 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
-    checkout_id: {
+    // add user reference
+    created_by: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Checkout',
+        ref: 'UserDetails',
+        required: true
+    },
+    cart_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cart',
         required: true
     },
     status: {

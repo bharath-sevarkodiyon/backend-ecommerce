@@ -6,9 +6,9 @@ const cartSchema = new Schema({
     created_by: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'UserDetails',
-        // required: true
+        required: true
     },
-    product_details: [{
+    productDetails: [{
         product_id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Product',
@@ -25,6 +25,7 @@ const cartSchema = new Schema({
             min: 0
         },
     }],
+    // overall Discount
     discount: {
         type: Number,
         min: 0,
@@ -39,12 +40,6 @@ const cartSchema = new Schema({
         type: Number,
         required: true,
         min: 0
-    },
-    // to show in stock or out of status in the cart page
-    productAvailability: {     
-        type: Boolean,
-        required: true,
-        default: false
     }
 });
 

@@ -6,7 +6,10 @@ const categorySchema = new Schema({
     categoryName: {
         type: String,
         required: true,
-    }
+    },
+    image: {
+        type: String
+    },
 })
 
 const productCategory = mongoose.model("productCategory", categorySchema)

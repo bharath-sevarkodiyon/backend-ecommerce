@@ -28,13 +28,12 @@ const userDetailSchema = new Schema({
         minlength: 10,
         maxlength: 15
     },
-    // To have user ordered products(Order History)
+    // To have customer ordered products(Order History)
     order_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',
-        required: true
     },
-    // Not forcing the user to enter the address, but while placing an order it is mandotory
+    // Not forcing the customer to enter the address details
     shippingAddress: {
         type: String,
     },

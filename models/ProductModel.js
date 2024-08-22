@@ -11,7 +11,7 @@ const productSchema = new Schema({
         required: true,
     },
     // price
-    item_price: {
+    itemPrice: {
         type: mongoose.Schema.Types.Decimal128,
         required: true,
         min: 0
@@ -21,7 +21,7 @@ const productSchema = new Schema({
         min: 0,
         default: 0
     },
-    discounted_price: {
+    sellingPrice: {
         type: mongoose.Schema.Types.Decimal128,
         required: true,
         min: 0
@@ -35,8 +35,9 @@ const productSchema = new Schema({
         type: String,
     }],
     // productCategory reference
-    productCategory: {
-        type: String,
+    product_category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ProductCategory',
         required: true,
     },
     // SKU: {

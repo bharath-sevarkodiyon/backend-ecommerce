@@ -13,7 +13,7 @@ const checkoutSchema = new Schema({
         ref: 'Cart',
         required: true
     },
-    // Make sure user enter the address
+    // Make sure customer enter the address
     shippingAddress: {
         type: String,
         required: true
