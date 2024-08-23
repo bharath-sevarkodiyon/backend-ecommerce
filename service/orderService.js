@@ -2,8 +2,8 @@ const orderDao = require('../dao/orderDao')
 
 const createOrderService = async (req, res)=>{
     try{
-        const userInput = req.body
-        const data = await orderDao.createOrder(userInput)
+        const orderData = req.body
+        const data = await orderDao.createOrder(orderData)
         return res.status(201).json(data)
     } catch(error){
         return res.status(500).json({ "message": "Internal server error" })

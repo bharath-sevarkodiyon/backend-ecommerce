@@ -2,8 +2,8 @@ const cartDao = require('../dao/cartDao')
 
 const createCartService = async (req, res)=>{
     try{
-        const userInput = req.body
-        const data = await cartDao.createCart(userInput)
+        const cartData = req.body
+        const data = await cartDao.createCart(cartData)
         return res.status(201).json(data)
     } catch(error){
         return res.status(500).json({ "message": "Internal server error" })

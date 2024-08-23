@@ -26,10 +26,16 @@ const deleteUsers = async () => {
     return user;
 };
 
+const findUser = async (email, password) => {
+    const user = await userModel.UserDetails.findOne({ email, password });
+    return user;
+};
+
 module.exports ={
     createUser,
     getUser,
     updateUser,
     removeUser,
-    deleteUsers
+    deleteUsers,
+    findUser
 }

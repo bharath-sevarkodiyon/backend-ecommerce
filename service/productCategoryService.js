@@ -2,8 +2,8 @@ const productCategoryDao = require('../dao/productCategoryDao')
 
 const createProductCategoryService = async (req, res)=>{
     try{
-        const userInput = req.body
-        const data = await productCategoryDao.createCategory(userInput)
+        const categoryData = req.body
+        const data = await productCategoryDao.createCategory(categoryData)
         return res.status(201).json(data)
     } catch(error){
         return res.status(500).json({ "message": "Internal server error" })

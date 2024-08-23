@@ -1,10 +1,15 @@
 const express = require('express')
 const userService = require('../service/userService')
-const userMiddleware = require('../middleware/userValidator')
+const userSignupMiddleware = require('../middleware/userSignupValidation')
+const userLoginMiddleware = require('../middleware/userLoginValidation')
 
 const userApi = express.Router()
 
-userApi.post('/signup',[userMiddleware.userValidator], userService.createUserService)
+userApi.post('/signup',[userSignupMiddleware.userSignupValidation], userService.createUserService)
+
+userApi.post('/login', [userLoginMiddleware.userLoginValidation], userService.loginUserService)
+
+userApi.post('/logout', userService.logoutUserService)
 
 userApi.get('/user', userService.getUserService)
 

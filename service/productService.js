@@ -2,8 +2,8 @@ const productDao = require('../dao/productDao')
 
 const createProductService = async (req, res)=>{
     try{
-        const userInput = req.body
-        const data = await productDao.createProduct(userInput)
+        const productData = req.body
+        const data = await productDao.createProduct(productData)
         return res.status(201).json(data)
     } catch(error){
         console.log("product service",error);
