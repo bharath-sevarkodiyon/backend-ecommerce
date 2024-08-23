@@ -43,8 +43,8 @@ const cartSchema = new Schema({
     }
 });
 
-const Cart = mongoose.model("viewcart", cartSchema);
+const cart = mongoose.model("viewcart", cartSchema);
 
 module.exports = {
-    Cart
+    cart
 };

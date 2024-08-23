@@ -2,16 +2,11 @@ const userService = require('../service/userService')
 
 const userValidator = (req, res, next) => {
   const fields = [
-    "fullName",
+    "firstName",
+    "lastName",
     "email",
     "password",
-    "role",
-    "phone",
-    "shippingAddress",
-    "billingAddress",
-    "city",
-    "state",
-    "pincode",
+    "phone"
   ];
   for (let field of fields) {
     const value = req.body[field];

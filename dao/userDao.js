@@ -1,22 +1,35 @@
-const createUserDetails = require('../models/UserDetailsModel')
+const userModel = require('../models/UserDetailsModel')
 
-const createUserDao = async (data)=>{
-    const newUser = new createUserDetails.UserDetails({
-        ...data
-    })
-    const newData = await newUser.save();
-    return {...newData._doc}
+const createUser = async (data)=>{
+    const newProduct = new userModel.UserDetails(data)
+    const newData = await newProduct.save();
+    return newData
 }
 
-const getUsersDao = async () => {
-    const getUser = new createUserDetails.UserDetails({
-        ...data
-    })
-    const users = await getUser.find({});
-    return {...users._doc}
+const getUser = async () => {
+    const user = await userModel.UserDetails.find();
+    return user
 };
 
-module.exports = {
-    createUserDao, 
-    getUsersDao
+const updateUser = async (userId, updateData) => {
+    const user = await userModel.UserDetails.findByIdAndUpdate(userId, updateData, { new: true });
+    return user
+};
+
+const removeUser = async (userId) => {
+    const user = await userModel.UserDetails.findByIdAndDelete(userId);
+    return user
+};
+
+const deleteUsers = async () => {
+    const user = await userModel.UserDetails.deleteMany({});
+    return user;
+};
+
+module.exports ={
+    createUser,
+    getUser,
+    updateUser,
+    removeUser,
+    deleteUsers
 }

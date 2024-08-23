@@ -8,12 +8,12 @@ const productSchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
+        // required: true,
     },
     // price
     itemPrice: {
         type: mongoose.Schema.Types.Decimal128,
-        required: true,
+        // required: true,
         min: 0
     },
     discount: {
@@ -40,17 +40,13 @@ const productSchema = new Schema({
         ref: 'ProductCategory',
         required: true,
     },
-    // SKU: {
-    //     type: String,
-    //     required: true,
-    //     unique: true,
-    // },
+    stockQuantity: {   
+        type: Number,
+        required: true,
+        min: 0
+    },
     brandName: {
         type: String,
-    },
-    availableStockQuantity: {   
-        type: Number,
-        min: 0
     },
     color: {
         type: String,

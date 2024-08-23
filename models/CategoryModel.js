@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const categorySchema = new Schema({
     categoryName: {
         type: String,
+        unique: true,
         required: true,
     },
     image: {

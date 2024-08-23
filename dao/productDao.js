@@ -16,7 +16,7 @@ const getproduct = async () => {
 const updateProduct = async (productId, updateData) => {
     // if 3rd argument is not present it return la old data, if it is true it returns the updated data
     const product = await productModel.Product.findByIdAndUpdate(productId, updateData, { new: true });
-    console.log("DAO", product);
+    // console.log("DAO", product);
     // returning an object
     return product
 };
@@ -24,14 +24,20 @@ const updateProduct = async (productId, updateData) => {
 const removeProduct = async (productId) => {
     // if 3rd argument is not present it return la old data, if it is true it returns the updated data
     const product = await productModel.Product.findByIdAndDelete(productId);
-    console.log("DAO", product);
+    // console.log("DAO", product);
     // returning an object
     return product
+};
+
+const deleteProducts = async () => {
+    const product = await Product.deleteMany({});
+    return product;
 };
 
 module.exports ={
     createProduct,
     getproduct,
     updateProduct,
-    removeProduct
+    removeProduct,
+    deleteProducts
 }

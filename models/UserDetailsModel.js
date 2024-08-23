@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userDetailSchema = new Schema({
-    fullName: {
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
         type: String,
         required: true,
     },
@@ -28,12 +32,12 @@ const userDetailSchema = new Schema({
         minlength: 10,
         maxlength: 15
     },
-    // To have customer ordered products(Order History)
+    // order History
     order_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order',
     },
-    // Not forcing the customer to enter the address details
+    // optional details
     shippingAddress: {
         type: String,
     },

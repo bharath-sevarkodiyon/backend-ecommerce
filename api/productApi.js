@@ -6,9 +6,11 @@ productApi.post('/product', productService.createProductService)
 
 productApi.get('/product', productService.getProductService)
 
-productApi.patch('/product/:id', productService.updateProductService)
+productApi.put('/product/:id', productService.updateProductService)
 
-productApi.patch('/product/:id', productService.removeProductService)
+productApi.delete('/product/:id', productService.removeProductService)
+
+productApi.delete('/product', productService.deleteProductService)
 
 
 module.exports = productApi

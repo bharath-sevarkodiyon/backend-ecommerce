@@ -6,7 +6,8 @@ const createProductService = async (req, res)=>{
         const data = await productDao.createProduct(userInput)
         return res.status(201).json(data)
     } catch(error){
-        console.log("service",error);
+        console.log("product service",error);
+        
         return res.status(500).json({ "message": "Internal server error" })
     }
 }
@@ -16,7 +17,6 @@ const getProductService = async (req, res)=>{
         const data = await productDao.getproduct()
         return res.status(200).json(data)
     } catch(error){
-        // console.log("service",error);
         return res.status(500).json({ "message": "Internal server error" })
     }
 }
@@ -42,9 +42,19 @@ const removeProductService = async (req, res) => {
     }
 };
 
+const deleteProductService = async (req, res) => {
+    try {
+        const data = await productDao.deleteProducts();
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ "message": "Internal server error" });
+    }
+};
+
 module.exports = {
     createProductService,
     getProductService,
     updateProductService,
-    removeProductService
+    removeProductService,
+    deleteProductService
 }

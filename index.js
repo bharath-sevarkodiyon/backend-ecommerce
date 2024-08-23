@@ -4,6 +4,7 @@ const productApi = require('./api/productApi')
 const userApi = require('./api/userApi');
 const viewCartApi = require('./api/viewCartApi');
 const orderApi = require('./api/orderApi');
+const productCategoryApi = require('./api/productCategoryApi');
 
 const app = express()
 
@@ -13,7 +14,9 @@ app.use(express.json());
 // api
 app.use('/api', productApi)
 
-app.use('/api', userApi)
+app.use('/api', productCategoryApi)
+
+app.use('/', userApi)
 
 app.use('/api', viewCartApi)
 

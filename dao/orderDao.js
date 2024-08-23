@@ -1,13 +1,17 @@
-const createOrder = require('../models/OrderModel')
+const orderModel = require('../models/OrderModel')
 
-const createOrderDao = async (data)=>{
-    const newOrder = new createOrder.Orders({
-        ...data
-    })
-    const newData = await newOrder.save();
-    return {...newData._doc}
+const createOrder = async (data)=>{
+    const newProduct = new orderModel.order(data)
+    const newData = await newProduct.save();
+    return newData
 }
 
+const getOrder = async () => {
+    const orders = await orderModel.order.find();
+    return orders
+};
+
 module.exports = {
-    createOrderDao
+    createOrder,
+    getOrder,
 }
