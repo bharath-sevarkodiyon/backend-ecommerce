@@ -30,7 +30,7 @@ const removeProduct = async (productId) => {
 };
 
 const deleteProducts = async () => {
-    const product = await Product.deleteMany({});
+    const product = await productModel.Product.deleteMany({});
     return product;
 };
 

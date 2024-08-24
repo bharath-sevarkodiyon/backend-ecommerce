@@ -74,7 +74,7 @@ const loginUserService = async (req, res) => {
         const validateToken = req.session.token
         console.log(!validateToken);
         
-        if (user && user.password === hashedPassword && !validateToken) {
+        if (user && user.password === hashedPassword && user.role ==="customer" && !validateToken) {
 
             const token = jwt.sign(
                 { email: user.email }, 
@@ -82,8 +82,9 @@ const loginUserService = async (req, res) => {
                 { expiresIn: '1h' });
 
             req.session.token = token;
+            req.session.role = user.role;
 
-            return res.status(200).json({ message: 'User Login successfully', token});
+            return res.status(200).json({ message: 'User Login successfully'});
         } else {
             return res.status(400).json({ message: 'User Login failed' });
         }
@@ -94,7 +95,7 @@ const loginUserService = async (req, res) => {
 };
 
 const logoutUserService = (req, res) => {
-    if(!req.session){
+    if(req.session.token){
         req.session.destroy(err => {
             if (err) {
                 return res.status(500).json({ message: 'User Failed to log out' });

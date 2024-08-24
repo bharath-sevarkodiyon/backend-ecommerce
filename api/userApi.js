@@ -1,22 +1,24 @@
 const express = require('express')
 const userService = require('../service/userService')
-const userSignupMiddleware = require('../middleware/userSignupValidation')
-const userLoginMiddleware = require('../middleware/userLoginValidation')
+const userSignupMiddleware = require('../middleware/userSignupMiddleware')
+const loginMiddleware = require('../middleware/LoginMiddleware')
+const roleValidationMiddleware = require('../middleware/roleValidationMiddleware');
+
 
 const userApi = express.Router()
 
 userApi.post('/signup',[userSignupMiddleware.userSignupValidation], userService.createUserService)
 
-userApi.post('/login', [userLoginMiddleware.userLoginValidation], userService.loginUserService)
+userApi.post('/login', [loginMiddleware.loginValidation], userService.loginUserService)
 
-userApi.post('/logout', userService.logoutUserService)
+userApi.post('/logout',[roleValidationMiddleware.customerValidation], userService.logoutUserService)
 
-userApi.get('/user', userService.getUserService)
+userApi.put('/user/:id',[roleValidationMiddleware.customerValidation], userService.updateUserService)
 
-userApi.put('/user/:id', userService.updateUserService)
+userApi.delete('/user/:id',[roleValidationMiddleware.customerValidation], userService.removeUserService)
 
-userApi.delete('/user/:id', userService.removeUserService)
+// userApi.get('/user', userService.getUserService) // get all the users
 
-userApi.delete('/user', userService.deleteUserService)
+// userApi.delete('/user', userService.deleteUserService) // Delete all users
 
 module.exports = userApi
