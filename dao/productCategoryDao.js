@@ -11,6 +11,11 @@ const getCategory = async () => {
     return category
 };
 
+const getCategoryById = async (categoryId) => {
+      const category = await CategoryModel.productCategory.findById(categoryId); // Find category by ID
+      return category;
+}
+
 const updateCategory = async (categoryId, updateData) => {
     const category = await CategoryModel.productCategory.findByIdAndUpdate(categoryId, updateData, { new: true });
     return category
@@ -29,6 +34,7 @@ const deleteCategory = async () => {
 module.exports ={
     createCategory,
     getCategory,
+    getCategoryById,
     updateCategory,
     removeCategory,
     deleteCategory

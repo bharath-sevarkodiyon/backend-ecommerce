@@ -17,6 +17,16 @@ const getProductCategoryService = async (req, res)=>{
     } catch(error){
         return res.status(500).json({ "message": "Internal server error" })
     }
+
+}
+const getProductCategoryIdService = async (req, res)=>{
+    const categoryId = req.params.id;
+    try{
+        const data = await productCategoryDao.getCategoryById(categoryId)
+        return res.status(200).json(data)
+    } catch(error){
+        return res.status(500).json({ "message": "Internal server error" })
+    }
 }
 
 const updateProductCategoryService = async (req, res) => {
@@ -52,6 +62,7 @@ const deleteProductCategoryService = async (req, res) => {
 module.exports = {
     createProductCategoryService,
     getProductCategoryService,
+    getProductCategoryIdService,
     updateProductCategoryService,
     removeProductCategoryService,
     deleteProductCategoryService

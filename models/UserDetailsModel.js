@@ -30,6 +30,7 @@ const userDetailSchema = new Schema({
     phone: {
         type: String,
         required: true,
+        unique: true,
         minlength: 10,
         maxlength: 15
     },

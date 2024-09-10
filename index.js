@@ -1,24 +1,32 @@
 const mongoose = require('mongoose');
+const cors = require('cors')
 const express = require('express')
-const session = require('express-session');
+const cookieParser = require('cookie-parser');
+// const session = require('express-session');
 
 const productApi = require('./api/productApi')
 const userApi = require('./api/userApi');
 const viewCartApi = require('./api/viewCartApi');
-const orderApi = require('./api/orderApi');
+// const orderApi = require('./api/orderApi');
 const productCategoryApi = require('./api/productCategoryApi');
 const adminApi = require('./api/adminApi');
+const orderApi = require('./api/orderApi');
 
 const app = express()
 
 app.use(express.json());
-
-app.use(session({
-  secret: '531c4d07a93fe127ad54ec71266492b1d578824a41fb9ab0a0aa0ae37028841e', 
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
+app.use(cors({
+  origin: 'http://localhost:5173', // Replace with your frontend URL
+  credentials: true
 }));
+app.use(cookieParser());
+
+// app.use(session({
+//   secret: '531c4d07a93fe127ad54ec71266492b1d578824a41fb9ab0a0aa0ae37028841e', 
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: false }
+// }));
 
 // api
 app.use('/api', productApi)

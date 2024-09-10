@@ -11,7 +11,19 @@ const getOrder = async () => {
     return orders
 };
 
+const updateOrder = async (orderId, updateData) => {
+    const orders = await orderModel.order.findByIdAndUpdate(orderId, updateData, { new: true });
+    return orders
+};
+
+const getOrderById = async (orderId) => {
+    const orders = await orderModel.order.findById({ _id: orderId});
+    return orders
+};
+
 module.exports = {
     createOrder,
     getOrder,
+    updateOrder,
+    getOrderById
 }

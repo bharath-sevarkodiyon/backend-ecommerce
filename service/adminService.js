@@ -19,7 +19,7 @@ const loginAdminService = async (req, res) => {
             const token = jwt.sign(
                 { email: user.email }, 
                 SECRET_KEY, 
-                { expiresIn: '1h' });
+                { expiresIn: '6h' });
 
             req.session.token = token;
             req.session.role = user.role;
@@ -29,7 +29,7 @@ const loginAdminService = async (req, res) => {
             return res.status(200).json({ message: 'Admin Login failed'});
         }
     } catch (error) {
-        console.log("user Service",error);
+        // console.log("user Service",error);
         return res.status(400).json({ message: 'Invalid admin email or password' });
     }
 };

@@ -3,15 +3,17 @@ const productCategoryService = require('../service/productCategoryService');
 const roleValidationMiddleware = require('../middleware/roleValidationMiddleware');
 const productCategoryApi = express.Router();
 
-productCategoryApi.post('/productCategory',[roleValidationMiddleware.adminValidation], productCategoryService.createProductCategoryService)
+productCategoryApi.post('/productCategory', [roleValidationMiddleware.isAuthenticated, roleValidationMiddleware.adminValidation], productCategoryService.createProductCategoryService)
 
-productCategoryApi.get('/productCategory',[roleValidationMiddleware.adminValidation], productCategoryService.getProductCategoryService)
+productCategoryApi.get('/productCategory', productCategoryService.getProductCategoryService)
 
-productCategoryApi.put('/productCategory/:id',[roleValidationMiddleware.adminValidation], productCategoryService.updateProductCategoryService)
+productCategoryApi.get('/productCategory/:id', productCategoryService.getProductCategoryIdService)
 
-productCategoryApi.delete('/productCategory/:id',[roleValidationMiddleware.adminValidation], productCategoryService.removeProductCategoryService)
+productCategoryApi.put('/productCategory/:id', [roleValidationMiddleware.isAuthenticated, roleValidationMiddleware.adminValidation], productCategoryService.updateProductCategoryService)
 
-productCategoryApi.delete('/productCategory',[roleValidationMiddleware.adminValidation], productCategoryService.deleteProductCategoryService)
+productCategoryApi.delete('/productCategory/:id', [roleValidationMiddleware.isAuthenticated, roleValidationMiddleware.adminValidation], productCategoryService.removeProductCategoryService)
+
+// productCategoryApi.delete('/productCategory', [roleValidationMiddleware.isAuthenticated, roleValidationMiddleware.adminValidation], productCategoryService.deleteProductCategoryService)
 
 
 module.exports = productCategoryApi

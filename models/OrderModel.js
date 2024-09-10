@@ -8,17 +8,38 @@ const orderSchema = new Schema({
         ref: 'UserDetails',
         required: true
     },
-    cart_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cart',
-        required: true
-    },
+    // cart_id: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Cart',
+    // },
     status: {
         type: String,
         required: true,
         enum: ['Processing', 'Shipped', 'Delivered', 'Cancelled'],
         default: 'Processing'
-    }
+    },
+    paymentMethod: {
+        type: String,
+        required: true
+    },
+    productDetails: [{
+        product_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
+            required: true
+        },
+        orderedQuantity: {
+            type: Number,
+            required: true,
+            min: 1
+        },
+        sellingPrice: {
+            type: Number,
+            required: true,
+            min: 0
+        },
+    }]}, {
+        timestamps: true // This adds createdAt and updatedAt fields
 });
 
 const order = mongoose.model('Orders', orderSchema);

@@ -1,11 +1,39 @@
-const express = require('express')
-const orderService = require('../service/orderService')
-const roleValidationMiddleware = require('../middleware/roleValidationMiddleware');
+const express = require("express");
+const orderService = require("../service/orderService");
+const roleValidationMiddleware = require("../middleware/roleValidationMiddleware");
 
-const orderApi = express.Router()
+const orderApi = express.Router();
 
-orderApi.post('/order',[roleValidationMiddleware.customerValidation], orderService.createOrderService)
+orderApi.post(
+  "/orders",
+  [
+    roleValidationMiddleware.isAuthenticated,
+    roleValidationMiddleware.customerValidation,
+  ],
+  orderService.createOrderService
+);
 
-orderApi.get('/order',[roleValidationMiddleware.customerValidation], orderService.getOrderService)
+orderApi.get(
+  "/orders",
+  [roleValidationMiddleware.isAuthenticated],
+  orderService.getOrderService
+);
+orderApi.put(
+  "/orders/:id",
+  [
+    roleValidationMiddleware.isAuthenticated,
+    roleValidationMiddleware.adminValidation,
+  ],
+  orderService.updateOrderService
+);
 
-module.exports = orderApi
+orderApi.get(
+  "/orders/:id",
+  [
+    roleValidationMiddleware.isAuthenticated,
+    roleValidationMiddleware.customerValidation,
+  ],
+  orderService.getOrderByIdService
+);
+
+module.exports = orderApi;

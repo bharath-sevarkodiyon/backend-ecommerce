@@ -9,20 +9,20 @@ const loginValidation = (req, res, next) => {
       // field present and empty
       if (value === undefined && typeof value === "string") {
         if(value.trim() === ""){
-          return res.status(400).json({ message: `Invalid field` });
+          return res.status(400).json({ message: `Empty field` });
         }
       }
 
       if (field === "email") {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(value)) {
-          return res.status(400).json({ message: "Invalid field" });
+          return res.status(400).json({ message: "Invalid email field" });
         }
       } 
   
       if (field === "password") {
         if (value.length < 8) {
-          return res.status(400).json({ message: "Invalid field" });
+          return res.status(400).json({ message: "Invalid password field" });
         }
       }
     }
