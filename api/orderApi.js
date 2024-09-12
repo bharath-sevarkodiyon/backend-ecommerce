@@ -30,8 +30,7 @@ orderApi.put(
 orderApi.get(
   "/orders/:id",
   [
-    roleValidationMiddleware.isAuthenticated,
-    roleValidationMiddleware.customerValidation,
+    roleValidationMiddleware.isAuthenticated
   ],
   orderService.getOrderByIdService
 );
