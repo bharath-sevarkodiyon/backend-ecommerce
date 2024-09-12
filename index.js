@@ -15,12 +15,10 @@ const orderApi = require('./api/orderApi');
 const app = express()
 
 app.use(express.json());
-app.use(cors());
-//   {
-//   origin: '*', // Replace with your frontend URL
-//   credentials: true
-// }
-
+app.use(cors({
+  origin: 'https://frontend-ecommerce-rouge-tau.vercel.app', // Replace with your frontend URL
+  credentials: true
+}));
 app.use(cookieParser());
 
 // api
