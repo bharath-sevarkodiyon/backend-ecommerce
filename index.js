@@ -16,7 +16,7 @@ const app = express()
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173', // Replace with your frontend URL
+  origin: 'https://frontend-ecommerce-rouge-tau.vercel.app/', // Replace with your frontend URL
   credentials: true
 }));
 app.use(cookieParser());
