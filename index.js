@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 const express = require('express')
 const cookieParser = require('cookie-parser');
-require('dotenv').config();
+// require('dotenv').config();
 // const session = require('express-session');
 
 const productApi = require('./api/productApi')
@@ -15,10 +15,12 @@ const orderApi = require('./api/orderApi');
 const app = express()
 
 app.use(express.json());
-app.use(cors({
-  origin: '*', // Replace with your frontend URL
-  credentials: true
-}));
+app.use(cors(
+//   {
+//   origin: '*', // Replace with your frontend URL
+//   credentials: true
+// }
+));
 app.use(cookieParser());
 
 // api
