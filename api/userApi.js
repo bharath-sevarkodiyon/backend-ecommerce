@@ -10,12 +10,21 @@ userApi.post('/signup', [userSignupMiddleware.userSignupValidation], userService
 
 userApi.post('/login', [loginMiddleware.loginValidation], userService.loginUserService)
 
-userApi.post('/logout', [roleValidationMiddleware.isAuthenticated, roleValidationMiddleware.customerValidation], userService.logoutUserService)
+userApi.post('/logout', 
+    [roleValidationMiddleware.isAuthenticated, 
+    roleValidationMiddleware.customerValidation], 
+    userService.logoutUserService)
 
 // To update the address
-userApi.patch('/user/:id', [roleValidationMiddleware.isAuthenticated, roleValidationMiddleware.customerValidation], userService.updateUserService)    
+userApi.patch('/user/:id', 
+    [roleValidationMiddleware.isAuthenticated, 
+    roleValidationMiddleware.customerValidation], 
+    userService.updateUserService)    
 
-userApi.delete('/user/:id', [roleValidationMiddleware.isAuthenticated, roleValidationMiddleware.customerValidation], userService.removeUserService)
+userApi.delete('/user/:id', 
+    [roleValidationMiddleware.isAuthenticated, 
+    roleValidationMiddleware.customerValidation],
+    userService.removeUserService)
 
 userApi.get('/user/:id', userService.getSingleUserService);
 

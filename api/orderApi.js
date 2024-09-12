@@ -6,33 +6,33 @@ const orderApi = express.Router();
 
 orderApi.post(
   "/orders",
-  // [
-  //   roleValidationMiddleware.isAuthenticated,
-  //   roleValidationMiddleware.customerValidation,
-  // ],
+  [
+    roleValidationMiddleware.isAuthenticated,
+    roleValidationMiddleware.customerValidation,
+  ],
   orderService.createOrderService
 );
 
 orderApi.get(
   "/orders",
-  // [roleValidationMiddleware.isAuthenticated],
+  [roleValidationMiddleware.isAuthenticated],
   orderService.getOrderService
 );
 orderApi.put(
   "/orders/:id",
-  // [
-  //   roleValidationMiddleware.isAuthenticated,
-  //   roleValidationMiddleware.adminValidation,
-  // ],
+  [
+    roleValidationMiddleware.isAuthenticated,
+    roleValidationMiddleware.adminValidation,
+  ],
   orderService.updateOrderService
 );
 
 orderApi.get(
   "/orders/:id",
-  // [
-  //   roleValidationMiddleware.isAuthenticated,
-  //   roleValidationMiddleware.customerValidation,
-  // ],
+  [
+    roleValidationMiddleware.isAuthenticated,
+    roleValidationMiddleware.customerValidation,
+  ],
   orderService.getOrderByIdService
 );
 
