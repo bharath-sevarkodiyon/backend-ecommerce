@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const cors = require('cors')
 const express = require('express')
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 // const session = require('express-session');
 
 const productApi = require('./api/productApi')
 const userApi = require('./api/userApi');
 const viewCartApi = require('./api/viewCartApi');
-// const orderApi = require('./api/orderApi');
 const productCategoryApi = require('./api/productCategoryApi');
 const adminApi = require('./api/adminApi');
 const orderApi = require('./api/orderApi');
@@ -20,13 +20,6 @@ app.use(cors({
   credentials: true
 }));
 app.use(cookieParser());
-
-// app.use(session({
-//   secret: '531c4d07a93fe127ad54ec71266492b1d578824a41fb9ab0a0aa0ae37028841e', 
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: false }
-// }));
 
 // api
 app.use('/api', productApi)
@@ -44,10 +37,15 @@ app.use('/api', orderApi)
 
 // Creating a mongoDB Connection and initializing port
 function connectDatabase(){
-  mongoose.connect('mongodb://localhost:27017/ecommerce')
+  mongoose.connect(process.env.MONGODB_URL)
   .then(() => {
-    app.listen(5000, (error) => {
-      console.log("Server started listining on port 5000...");
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, (error) => {
+      if (error) {
+        console.error('Error starting server:', error);
+      } else {
+        console.log(`Server started listening on port ${PORT}...`);
+      }
     })
     console.log('Mongoose connected to the database');
   })

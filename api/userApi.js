@@ -19,7 +19,7 @@ userApi.delete('/user/:id', [roleValidationMiddleware.isAuthenticated, roleValid
 
 userApi.get('/user/:id', userService.getSingleUserService);
 
-userApi.get('/user', userService.getUserService) // get all the users
+userApi.get('/user', userService.getUserService)
 
 // userApi.delete('/user', userService.deleteUserService) // Delete all users
 
