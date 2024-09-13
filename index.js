@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(cors({
   origin: 'https://frontend-ecommerce-rouge-tau.vercel.app', // Replace with your frontend URL
   credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(cookieParser());
 
