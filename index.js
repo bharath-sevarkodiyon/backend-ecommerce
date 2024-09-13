@@ -16,7 +16,7 @@ const app = express()
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://frontend-ecommerce-rouge-tau.vercel.app', // Replace with your frontend URL
+  origin: process.env.FRONTEND_URL, // Replace with your frontend URL
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
