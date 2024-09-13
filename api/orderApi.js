@@ -15,9 +15,9 @@ orderApi.post(
 
 orderApi.get(
   "/orders",
-  [roleValidationMiddleware.isAuthenticated,
-  roleValidationMiddleware.adminValidation    
-  ],
+  // [roleValidationMiddleware.isAuthenticated,
+  // roleValidationMiddleware.adminValidation    
+  // ],
   orderService.getOrderService
 );
 orderApi.put(
