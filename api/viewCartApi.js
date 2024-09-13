@@ -10,7 +10,7 @@ viewCartApi.post('/viewcart',
     viewCartService.createCartService)
 
 viewCartApi.get('/viewcart', 
-    // roleValidationMiddleware.isAuthenticated, 
+    roleValidationMiddleware.isAuthenticated, 
     // roleValidationMiddleware.customerValidation, 
     viewCartService.getAllCartService)
 
