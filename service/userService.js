@@ -102,7 +102,7 @@ const loginUserService = async (req, res) => {
         .status(200)
         .json({ message: "User login successfully", data: user, token });
     } else {
-      return res.status(400).json({ message: "User login failed" });
+      return res.status(400).json({ message: "Invalid Email or password" });
     }
   } catch (error) {
     console.log("User Service Error:", error);
